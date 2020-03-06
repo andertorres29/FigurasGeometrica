@@ -10,12 +10,12 @@ package edu.unicundi.figurasgeometrica;
  * @author Ander
  */
 public class Rectangulo extends Figuras{
-    private String tipo;
-    
-    public Rectangulo (String t, int l1, int l2){
-        setLado1(l1);
-        setLado2(l2);
-        this.tipo = t;
+    private int coorX1;
+    private int coorY1;
+
+    public Rectangulo(int coorX1, int coorY1) {
+        this.coorX1 = coorX1;
+        this.coorY1 = coorY1;
     }
     
     public int hallarPerimetro(){
@@ -30,8 +30,9 @@ public class Rectangulo extends Figuras{
         return are;
     }
     
-    public void mostraTipo(){
+      
+}
+/* public void mostraTipo(){
         System.out.println("EL tipo de figura es: "+tipo);
         
-    }   
-}
+    }*/

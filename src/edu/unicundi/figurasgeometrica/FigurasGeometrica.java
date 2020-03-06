@@ -15,14 +15,12 @@ public class FigurasGeometrica {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       Grafica grafica = new Grafica();
-       grafica.setVisible(true);
-       
+        Grafica obj1 = new Grafica();
+        obj1.setVisible(true);
+            
+        }
+
     }
-    
-}
-
-
 /*Cuadrado c1 = new Cuadrado("Cuadrado",5,4);
         c1.mostraTipo();
         c1.mostrarDatos();

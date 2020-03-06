@@ -5,19 +5,15 @@
  */
 package edu.unicundi.figurasgeometrica;
 
-
-
-
-
 import java.awt.Graphics;
-
+import java.util.ArrayList;
 
 /**
  *
  * @author Ander
  */
 public class Grafica extends javax.swing.JFrame {
-     
+     public ArrayList<Figuras> listaFig = new ArrayList();
     
     /**
      * Creates new form Grafica
@@ -26,6 +22,12 @@ public class Grafica extends javax.swing.JFrame {
         initComponents();
         ocultarComponentes();
         
+    }
+    
+    public void mostrarLista(){
+        for (int i = 0; i <listaFig.size(); i++) {
+            System.out.println(listaFig.get(i));
+        }
     }
 
     public void dibujar(Graphics g){   
@@ -200,7 +202,7 @@ public class Grafica extends javax.swing.JFrame {
         labelResLado1.setVisible(true);
         labelResLado2.setVisible(true);
         labelResLado3.setVisible(true);
-    }    
+    } 
     
     public void calcularLadosCuadrado(){
         String tipo = "Cuadrado";
@@ -241,7 +243,7 @@ public class Grafica extends javax.swing.JFrame {
             labelResLado2.setText(vaLado);
             labelResLado3.setText(vaLado);
             labelResLado4.setText(vaLado);
-            
+
             Graphics p=panelGrafica.getGraphics();
             p.drawLine(coorX1, coorY1, coorX2, coorY2);
             p.drawLine(coorX3, coorY3, coorX4, coorY4);
@@ -389,12 +391,108 @@ public class Grafica extends javax.swing.JFrame {
             p.drawLine(coorX5, coorY5, coorX6, coorY6);
         }          
 }
+    
+    public void guardarLadosCuadrado(){
+        int coorX1,coorY1,coorX2,coorY2,mayor,menor,valorLado;
+        int coorX3,coorY3,coorX4,coorY4;
+        int coorX5,coorY5,coorX6,coorY6;
+        int coorX7,coorY7,coorX8,coorY8;
+        coorX1 = Integer.parseInt(txtCoordenadaX1.getText());
+        coorY1 = Integer.parseInt(txtCoordenadaY1.getText());
+        coorX2 = Integer.parseInt(txtCoordenadaX2.getText());
+
+        if (coorX1>coorX2){
+            mayor = coorX1; menor = coorX2; valorLado = mayor - menor;
+            coorY2 = coorY1;
+            coorX3 = coorX2;
+            coorY3 = coorY2;
+            coorX4 = coorX2;
+            coorY4 = coorY2 - valorLado;
+            coorX5 = coorX4;
+            coorY5 = coorY4;
+            coorX6 = coorX4 + valorLado;
+            coorY6 = coorY4;
+            coorX7 = coorX6;
+            coorY7 = coorY6;
+            coorX8 = coorX6;
+            coorY8 = coorY6 + valorLado;
+            Cuadrado c1 = new Cuadrado(coorX1,coorY1,coorX2,coorY2,coorX3,
+                    coorY3,coorX4,coorY4,coorX5,coorY5,coorX6,coorY6,coorX7,coorY7,coorX8,coorY8);
+            listaFig.add(c1);
+            
+        }else{
+            mayor = coorX2; menor = coorX1; valorLado = mayor - menor;
+            coorY2 = coorY1;
+            coorX3 = coorX2;
+            coorY3 = coorY2;
+            coorX4 = coorX2;
+            coorY4 = coorY2 - valorLado;
+            coorX5 = coorX4;
+            coorY5 = coorY4;
+            coorX6 = coorX4 - valorLado;
+            coorY6 = coorY4;
+            coorX7 = coorX6;
+            coorY7 = coorY6;
+            coorX8 = coorX6;
+            coorY8 = coorY6 + valorLado;
+            Cuadrado c1 = new Cuadrado(coorX1,coorY1,coorX2,coorY2,coorX3,
+                    coorY3,coorX4,coorY4,coorX5,coorY5,coorX6,coorY6,coorX7,coorY7,coorX8,coorY8);
+            listaFig.add(c1);
+        }
+    }
+    
+    public void guardarLadosRectangulo(){
+        int coorX1, coorY1;
+        coorX1 = Integer.parseInt(txtCoordenadaX1.getText());
+        coorY1 = Integer.parseInt(txtCoordenadaY1.getText());
+        Rectangulo r1 = new Rectangulo(coorX1,coorY1);
+            listaFig.add(r1);
+    }
+    
+    public void guardarLadosTriangulo(){
+        int mayor,menor;
+        int coorX1,coorY1,coorX2,coorY2;
+        int coorX3,coorY3,coorX4,coorY4;
+        int coorX5,coorY5,coorX6,coorY6;
+        coorX1 = Integer.parseInt(txtCoordenadaX1.getText());
+        coorY1 = Integer.parseInt(txtCoordenadaY1.getText());
+        coorX2 = Integer.parseInt(txtCoordenadaX2.getText());
+        coorY2 = Integer.parseInt(txtCoordenadaY1.getText());
+        coorX4 = Integer.parseInt(txtCoordenadaX4.getText());
+        coorY4 = Integer.parseInt(txtCoordenadaY4.getText());
+        
+        if (coorY1>coorY2){
+            coorX3 = coorX2;
+            coorY3 = coorY2;
+            coorX5 = coorX4;
+            coorY5 = coorY4;
+            coorX6 = coorX1;
+            coorY6 = coorY1; 
+            Triangulo t1 = new Triangulo(coorX1,coorY1,coorX2,coorY2,coorX3,
+                    coorY3,coorX4,coorY4,coorX5,coorY5,coorX6,coorY6);
+            listaFig.add(t1);
+            
+        }else {
+            coorX3 = coorX2;
+            coorY3 = coorY2;
+            coorX5 = coorX4;
+            coorY5 = coorY4;
+            coorX6 = coorX1;
+            coorY6 = coorY1;
+            Triangulo t1 = new Triangulo(coorX1,coorY1,coorX2,coorY2,coorX3,
+                    coorY3,coorX4,coorY4,coorX5,coorY5,coorX6,coorY6);
+            listaFig.add(t1);
+        }          
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
      * regenerated by the Form Editor.
      */
+    
     @SuppressWarnings("unchecked")
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -405,7 +503,7 @@ public class Grafica extends javax.swing.JFrame {
         panelGrafica = new javax.swing.JPanel();
         btnGraficar = new javax.swing.JButton();
         btnCalcular = new javax.swing.JButton();
-        btnRestablecer = new javax.swing.JButton();
+        btnGuardarCoord = new javax.swing.JButton();
         panelCoordenadas = new javax.swing.JPanel();
         labelTipo = new javax.swing.JLabel();
         cbxTipoFigura = new javax.swing.JComboBox();
@@ -446,6 +544,7 @@ public class Grafica extends javax.swing.JFrame {
         labelResLado2 = new javax.swing.JLabel();
         labelResLado3 = new javax.swing.JLabel();
         labelResLado4 = new javax.swing.JLabel();
+        cbxFigura = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -479,7 +578,7 @@ public class Grafica extends javax.swing.JFrame {
         });
         panelPrincipal.add(btnGraficar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, 110, 40));
 
-        btnCalcular.setText("CALCULAR");
+        btnCalcular.setText("Grafica Vector");
         btnCalcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCalcularActionPerformed(evt);
@@ -487,13 +586,13 @@ public class Grafica extends javax.swing.JFrame {
         });
         panelPrincipal.add(btnCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 430, 110, 40));
 
-        btnRestablecer.setText("RESTABLECER");
-        btnRestablecer.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardarCoord.setText("Guarda Coord");
+        btnGuardarCoord.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRestablecerActionPerformed(evt);
+                btnGuardarCoordActionPerformed(evt);
             }
         });
-        panelPrincipal.add(btnRestablecer, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 430, 110, 40));
+        panelPrincipal.add(btnGuardarCoord, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 430, 110, 40));
 
         panelCoordenadas.setBackground(new java.awt.Color(0, 102, 102));
         panelCoordenadas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -636,6 +735,9 @@ public class Grafica extends javax.swing.JFrame {
         labelResLado4.setForeground(new java.awt.Color(255, 0, 0));
         panelCoordenadas.add(labelResLado4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 40, 20));
 
+        cbxFigura.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Guardar Cuadrado", "Guardar Rectangulo", "Guardar Triangulo" }));
+        panelCoordenadas.add(cbxFigura, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 120, -1));
+
         panelPrincipal.add(panelCoordenadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 370, 280));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -666,6 +768,16 @@ public class Grafica extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxTipoFiguraActionPerformed
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
+        String figu = cbxFigura.getSelectedItem().toString();
+        if (figu.equals("Guardar Cuadrado")) {
+            calcularLadosCuadrado();
+        } else if (figu.equals("Guardar Rectangulo")){
+            calcularLadosRectangulo();
+        } else if (figu.equals("Guardar Triangulo")) {
+            calcularLadosTriangulo();
+        } else {
+            System.out.println("Elija Una Opcion");
+        }
         
     }//GEN-LAST:event_btnCalcularActionPerformed
 
@@ -683,9 +795,21 @@ public class Grafica extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnGraficarActionPerformed
 
-    private void btnRestablecerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestablecerActionPerformed
-        
-    }//GEN-LAST:event_btnRestablecerActionPerformed
+    private void btnGuardarCoordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCoordActionPerformed
+        String figu = cbxFigura.getSelectedItem().toString();
+        if (figu.equals("Guardar Cuadrado")) {
+            guardarLadosCuadrado();
+            mostrarLista();
+        } else if (figu.equals("Guardar Rectangulo")){
+            guardarLadosRectangulo();
+            mostrarLista();
+        } else if (figu.equals("Guardar Triangulo")) {
+            guardarLadosTriangulo();
+            mostrarLista();
+        } else {
+            System.out.println("Elija Una Opcion");
+        }
+    }//GEN-LAST:event_btnGuardarCoordActionPerformed
 
    
     /**
@@ -842,7 +966,8 @@ public class Grafica extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcular;
     private javax.swing.JButton btnGraficar;
-    private javax.swing.JButton btnRestablecer;
+    private javax.swing.JButton btnGuardarCoord;
+    private javax.swing.JComboBox cbxFigura;
     private javax.swing.JComboBox cbxTipoFigura;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
