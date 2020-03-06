@@ -443,9 +443,14 @@ public class Grafica extends javax.swing.JFrame {
     
     public void guardarLadosRectangulo(){
         int coorX1, coorY1;
+        int base = 0;
+        int altura = 0;
         coorX1 = Integer.parseInt(txtCoordenadaX1.getText());
         coorY1 = Integer.parseInt(txtCoordenadaY1.getText());
-        Rectangulo r1 = new Rectangulo(coorX1,coorY1);
+        base = Integer.parseInt(txtBase.getText());
+        altura = Integer.parseInt(txtAltura.getText());
+        
+        Rectangulo r1 = new Rectangulo(coorX1,coorY1,base,altura);
             listaFig.add(r1);
     }
     

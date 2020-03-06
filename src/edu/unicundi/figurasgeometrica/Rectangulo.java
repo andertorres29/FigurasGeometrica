@@ -12,12 +12,16 @@ package edu.unicundi.figurasgeometrica;
 public class Rectangulo extends Figuras{
     private int coorX1;
     private int coorY1;
+    private int base;
+    private int altura;
 
-    public Rectangulo(int coorX1, int coorY1) {
+    public Rectangulo(int coorX1, int coorY1, int base, int altura) {
         this.coorX1 = coorX1;
         this.coorY1 = coorY1;
+        this.base = base;
+        this.altura = altura;
     }
-    
+
     public int hallarPerimetro(){
         int per = (getLado1()*2)+(getLado2()*2);
         System.out.println("El perimetro es: "+per);
